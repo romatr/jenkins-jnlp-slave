@@ -28,6 +28,7 @@ if [ "$(id -u)" == "0" ]; then
         '/home/jenkins/.coursier'
         '/home/jenkins/.ivy'
         '/home/jenkins/.sbt'
+        '/home/jenkins/.helm'
         '/home/jenkins'
     )
     for d in ${dirs[@]}; do
