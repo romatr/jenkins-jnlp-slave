@@ -144,7 +144,7 @@ RUN \
     ; \
     pip3 install --upgrade --no-cache-dir awscli
 
-ARG KUBECTL_VERSION="1.14.3"
+ARG KUBECTL_VERSION="1.14.6"
 
 RUN \
     echo "Installing kubectl" \
@@ -152,7 +152,7 @@ RUN \
     wget -q https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl
 
-ARG HELM_VERSION="2.14.1"
+ARG HELM_VERSION="2.14.3"
 
 RUN \
     echo "Installing kubernetes helm" \

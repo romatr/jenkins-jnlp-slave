@@ -26,9 +26,16 @@ if [ "$(id -u)" == "0" ]; then
         '/home/jenkins/.gradle/native'
         '/home/jenkins/.gradle/wrapper'
         '/home/jenkins/.coursier'
+        '/home/jenkins/.helm'
+        '/home/jenkins/.helm/cache'
+        '/home/jenkins/.helm/cache/archive'
+        '/home/jenkins/.helm/plugins'
+        '/home/jenkins/.helm/repository'
+        '/home/jenkins/.helm/repository/cache'
+        '/home/jenkins/.helm/repository/local'
+        '/home/jenkins/.helm/starters'
         '/home/jenkins/.ivy'
         '/home/jenkins/.sbt'
-        '/home/jenkins/.helm'
         '/home/jenkins'
     )
     for d in ${dirs[@]}; do
