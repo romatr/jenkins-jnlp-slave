@@ -144,7 +144,7 @@ RUN \
     ; \
     pip3 install --upgrade --no-cache-dir awscli
 
-ARG KUBECTL_VERSION="1.14.6"
+ARG KUBECTL_VERSION="1.14.7"
 
 RUN \
     echo "Installing kubectl" \
