@@ -152,14 +152,13 @@ RUN \
     wget -q https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl
 
-ARG HELM_VERSION="2.16.1"
+ARG HELM_VERSION="3.0.0"
 
 RUN \
     echo "Installing kubernetes helm" \
     ; \
-    wget -q https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz -O - | tar -xzO linux-amd64/helm > /usr/local/bin/helm \
-	&& chmod +x /usr/local/bin/helm \
-	&& su - jenkins -c "helm init --client-only"
+    wget -q https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz -O - | tar -xzO linux-amd64/helm > /usr/local/bin/helm \
+	&& chmod +x /usr/local/bin/helm
 
 COPY entrypoint.sh /entrypoint.sh
 
@@ -171,3 +170,4 @@ COPY wrapdocker.sh /usr/local/bin/wrapdocker
 VOLUME /var/lib/docker
 
 ENTRYPOINT [ "tiny", "--", "/entrypoint.sh" ]
+
