@@ -139,6 +139,27 @@ RUN \
         ; \
     fi
 
+RUN \
+    echo "Installing awscli" \
+    ; \
+    pip3 install --upgrade --no-cache-dir awscli
+
+ARG KUBECTL_VERSION="1.14.8"
+
+RUN \
+    echo "Installing kubectl" \
+    ; \
+    wget -q https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl \
+    && chmod +x /usr/local/bin/kubectl
+
+ARG HELM_VERSION="3.0.0"
+
+RUN \
+    echo "Installing kubernetes helm" \
+    ; \
+    wget -q https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz -O - | tar -xzO linux-amd64/helm > /usr/local/bin/helm \
+	&& chmod +x /usr/local/bin/helm
+
 COPY entrypoint.sh /entrypoint.sh
 
 ## https://github.com/docker-library/docker/blob/fe2ca76a21fdc02cbb4974246696ee1b4a7839dd/18.06/modprobe.sh
@@ -149,3 +170,4 @@ COPY wrapdocker.sh /usr/local/bin/wrapdocker
 VOLUME /var/lib/docker
 
 ENTRYPOINT [ "tiny", "--", "/entrypoint.sh" ]
+
